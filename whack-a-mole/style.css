@@ -1,0 +1,64 @@
+body {
+  zoom: .5;
+}
+
+.pf {
+  margin-top: 3rem;
+  display: grid;
+  grid-template-rows: 50% 50%;
+  grid-template-columns: 25% 25% 25% 25%;
+  row-gap: 3rem;
+}
+
+.wgs {
+  position: relative;
+  display: inline-block;
+  width: 640px;
+  height: 482px;
+  overflow: hidden;
+}
+
+.wgs__mole-head {
+  height: 356px;
+  width: 376px;
+  left: 109px;
+  position: absolute;
+}
+
+.wgs__mole-hill {
+  height: 220px;
+  width: 640px;
+  position: absolute;
+  top: 262px;
+  z-index: 1;
+}
+
+.wgs__mole-head--hidden {
+  transform: translateY(482px);
+  transition: all .25s;
+}
+
+
+.sb {
+  background-color: cornflowerblue;
+  border-bottom: 1px solid #645DED;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  color: white;
+  display: flex;
+  font-size: 4rem;
+  margin-bottom: 4rem;
+  padding: 10px 20px;
+}
+
+.sb__mole-counter {
+  flex: 1 0 0;
+  text-align: right;
+}
+
+.sb__score-holder {
+  flex: 1 0 0;
+}
+
+.sb__game-over--hidden {
+  display: none;
+}
