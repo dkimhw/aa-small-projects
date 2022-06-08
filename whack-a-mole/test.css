@@ -1,0 +1,65 @@
+
+@keyframes slidein {
+  0% {
+    opacity: .3;
+    transform: scale(.1);
+  }
+
+  10% {
+    opacity: .4;
+    transform: scale(.2);
+  }
+
+  20% {
+    opacity: .5;
+    transform: scale(.3);
+  }
+
+  30% {
+    opacity: .6;
+    transform: scale(.4);
+  }
+
+  40% {
+    opacity: .7;
+    transform: scale(.5);
+  }
+
+  50% {
+    opacity: .8;
+    transform: scale(.6);
+  }
+
+  60% {
+    opacity: .9;
+    transform: scale(.7);
+  }
+
+  70% {
+    opacity: 1;
+    transform: scale(.8);
+  }
+
+  80% {
+    transform: scale(.9);
+  }
+
+  90% {
+    transform: scale(1);
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+.circle {
+  margin-top: 4rem;
+  height: 200px;
+  width: 200px;
+  display: inline-block;
+  border-radius: 50%;
+  border: 1rem solid #f95959;
+  animation-duration: .25s;
+  animation-name: slidein;
+}
