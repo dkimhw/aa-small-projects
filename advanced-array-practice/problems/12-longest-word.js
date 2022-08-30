@@ -18,9 +18,18 @@ console.log(longestWord('')); // ''
 
 let longestWord = function(sentence) {
     // Your code here
+    return sentence.split(' ').reduce((currMax, curr) => {
+        if (curr.length > currMax.length) {
+            return curr;
+        } else {
+            return currMax;
+        }
+    }, '');
 };
 
 // Your code here
+console.log(longestWord('where did everyone go')); // 'everyone'
+
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS  LINE*****************/
 
@@ -28,4 +37,4 @@ try {
     module.exports = longestWord;
 } catch (e) {
     module.exports = null;
-}
+}

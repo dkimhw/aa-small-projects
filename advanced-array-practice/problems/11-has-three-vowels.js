@@ -18,6 +18,8 @@ console.log(hasThreeVowels('go home'));         //  false
 
 let hasThreeVowels = function(string) {
     // Your code here
+    let vowels = new Set(string.match(/[aeiou]/gi));
+    return vowels ? vowels.size >= 3 : false;
 };
 
 // Your code here
@@ -28,4 +30,4 @@ try {
     module.exports = hasThreeVowels;
 } catch (e) {
     module.exports = null;
-}
+}

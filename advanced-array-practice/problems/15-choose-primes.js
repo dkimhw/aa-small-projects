@@ -20,10 +20,18 @@ console.log(choosePrimes([5, 6, 4, 11, 2017])); // [ 5, 11, 2017 ]
 
 let isPrime = function(num) {
     // Your code here
+    for (let idx = 2; idx < num; idx += 1) {
+        if (num % idx === 0) {
+            return false;
+        }
+    }
+
+    return true;
 }
 
 let choosePrimes = function(nums) {
     // Your code here
+    return nums.filter(el => isPrime(el));
 }
 
 // alternative solution using Array.filter
@@ -37,4 +45,4 @@ try {
     module.exports = choosePrimes;
 } catch (e) {
     module.exports = null;
-}
+}
