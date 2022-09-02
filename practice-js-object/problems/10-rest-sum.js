@@ -11,6 +11,7 @@ restSum(0); // => 0
 
 function restSum(...otherNums) {
   // Your code here
+  return otherNums.reduce((total, curr) => total + curr, 0);
 }
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS  LINE*****************/

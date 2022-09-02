@@ -12,6 +12,10 @@ valuePair(object1, object2, 'name'); // => [ 'One', 'Two' ]
 
 function valuePair(obj1, obj2, key) {
   // Your code here
+  result1 = Object.entries(obj1).filter(el => el[0] === key).map(el => el[1]);
+  result2 = Object.entries(obj2).filter(el => el[0] === key).map(el => el[1]);
+
+  return result1.concat(result2);
 }
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS  LINE*****************/
