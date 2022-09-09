@@ -10,10 +10,26 @@ console.log(minValueCallback([64, 25, 49, 9, 100], Math.sqrt));  // 3
 
 *******************************************************************************/
 
-let minValueCallback = function() {
+let minValueCallback = function(arr, cb) {
+  let minVal = Number.POSITIVE_INFINITY;
 
+  if (cb) {
+    for (let el of arr) {
+      if (cb(el) < minVal) {
+        minVal = cb(el);
+      }
+    }
+  } else {
+    for (let el of arr) {
+      if (el < minVal) {
+        minVal = el;
+      }
+    }
+  }
+
+  return minVal;
 };
-
+// console.log(minValueCallback([64, 25, 49, 9, 100]));             // 9
 
 
 

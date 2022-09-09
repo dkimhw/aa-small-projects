@@ -37,10 +37,16 @@ let result6 = one(['apple', 'dog', 'food', 'cat'], function(el, idx) {
 console.log(result6);   // true
 *******************************************************************************/
 
-let one = function() {
-
+let one = function(arr, cb) {
+  let numOfTrueVals = 0;
+  for (let [idx, el] of arr.entries()) {
+    if (cb(el, idx)) {
+      numOfTrueVals++;
+    }
+  }
+  console.log(numOfTrueVals);
+  return numOfTrueVals === 1;
 };
-
 
 
 
