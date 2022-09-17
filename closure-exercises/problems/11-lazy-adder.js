@@ -23,6 +23,16 @@ AFTER YOU ARE FINISHED WITH THIS PROBLEM, ASK FOR A CODE REVIEW
 ***********************************************************************/
 
 // your code here
+const lazyAdder = (num) => {
+  let sum = num;
+  return (num2) => {
+    sum += num2;
+    return (num3) => {
+      sum += num3;
+      return sum;
+    }
+  }
+}
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS  LINE*****************/
 
