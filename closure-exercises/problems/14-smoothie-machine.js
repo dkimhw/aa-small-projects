@@ -24,6 +24,16 @@ console.log(smoothie2("pineapple"));
 
 // your code here
 
+const smoothieMachine = () => {
+  let ingredients = [];
+
+  return (...args) => {
+    args.forEach(el => ingredients.push(el));
+    let ingredientsStr = ingredients.join(' and ');
+    return `I'm having a smoothie with ${ingredientsStr}`;
+  }
+}
+
 /**************DO NOT MODIFY ANYTHING UNDER THIS  LINE*****************/
 try {
   module.exports = smoothieMachine;

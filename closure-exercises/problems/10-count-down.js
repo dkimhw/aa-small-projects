@@ -32,14 +32,21 @@ Example 4:
 
 const countDownTimer = (n) => {
   let count = n;
-  const happyNewYear = () => {
-    count--;
-    if (count === 0) {
-      return "Happy New Year!";
+  if (count === 0) {
+    return "Happy New Year!";
+  } else {
+    return () => {
+      if (count > 0) {
+        count -= 1;
+      }
+
+      if (count === 0) {
+        return "Happy New Year!";
+      }
     }
   }
 
-  return happyNewYear;
+
 }
 
 let threeDays = countDownTimer(3); // returns a function
@@ -47,6 +54,7 @@ console.log(threeDays()); // returns a function
 console.log(threeDays()); // returns a function
 console.log(threeDays()); // prints "Happy New Year!"
 
+console.log(countDownTimer(0)); // prints "Happy New Year!"
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS  LINE*****************/
 
