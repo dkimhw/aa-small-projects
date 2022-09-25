@@ -20,11 +20,18 @@ fibonacci(10); // 55
 ***********************************************************************/
 
 // your code here
-  
+const fibonacci = (n) => {
+  // Base Case
+ if (n === 1 || n === 2) return 1;
+
+ return fibonacci(n - 1) + fibonacci(n - 2);
+}
+
+console.log(fibonacci(10)); // 55
+console.log(fibonacci(4)); // 3
 /**************DO NOT MODIFY ANYTHING UNDER THIS LINE*****************/
 try {
   module.exports = fibonacci;
 } catch (e) {
   module.exports = null;
 }
-  

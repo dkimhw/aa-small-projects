@@ -11,7 +11,24 @@ flatten([1, [2, [3]]]); // [1, 2, 3]
 ***********************************************************************/
 
 // your code here
-  
+const flatten = (arr) => {
+  // stack works here
+  let results = []
+  const flattenRecursive = (results, arr) => {
+    if (!Array.isArray(arr)) results.push(arr);
+    if (arr.length === 0) return;
+
+    for (let idx = 0; idx < arr.length; idx += 1) {
+      flattenRecursive(results, arr[idx]);
+    }
+  }
+
+  flattenRecursive(results, arr)
+  return results;
+}
+
+console.log(flatten([1, [2, [3]]])); // [1, 2, 3])
+
 /**************DO NOT MODIFY ANYTHING UNDER THIS LINE*****************/
 try {
   module.exports = flatten;
