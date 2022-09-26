@@ -23,8 +23,20 @@ sort([]); // []
 
 function sort(nums, sorted = []) {
   // your code here
+  if (nums.length === 0) return sorted
+
+  // find smallest value
+  let smallest = Math.min(...nums);
+  sorted.push(smallest);
+
+  // remove smallest value
+  let smallestIdx = nums.findIndex(el => el === smallest);
+  nums.splice(smallestIdx, 1);
+
+  return sort(nums, sorted)
 }
 
+console.log(sort([4,1,6,3,1,7])); // [1, 1, 3, 4, 6, 7]
 /**************DO NOT MODIFY ANYTHING UNDER THIS LINE*****************/
 try {
   module.exports = sort;
