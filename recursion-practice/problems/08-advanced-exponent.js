@@ -41,10 +41,21 @@ times `advancedExponent` is being recursively called.
 
 
 function advancedExponent(b, n) {
-  // your code here
+  // Base Case
+  if (n === 0) return 1;
+
+  // Recursive Case
+  if (n % 2 === 0) {
+    let half = advancedExponent(b, n / 2);
+    return half * half;
+  } else {
+    let half = advancedExponent(b, (n - 1) / 2);
+    return b * half * half;
+  }
 }
 
-
+console.log(advancedExponent(2, 5)); // 32)
+console.log(advancedExponent(2, 12)); // 4096)
 /**************DO NOT MODIFY ANYTHING UNDER THIS LINE*****************/
 try {
   module.exports = advancedExponent;

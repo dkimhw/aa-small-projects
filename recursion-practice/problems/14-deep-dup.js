@@ -36,36 +36,41 @@ console.log(x[0] === y[0]) // true
 
 ***********************************************************************/
 
-// let arr = [ [1], [2, [3]] ];
-const deepDup = (arr) => {
-  let results = []
-  const deepDupRecursive = (arr, subArr, val = null) => {
-    if (!Array.isArray(arr)) subArr.push(val);
-    if (arr.length === 0) return;
+const deepDup = (inObject) => {
+  let outObject, value, key
 
-    for (let idx = 0; idx < arr.length; idx += 1) {
-      deepDupRecursive(arr, subArr);
-    }
+  if (typeof inObject !== "object" || inObject === null) {
+    return inObject // Return the value if inObject is not an object
   }
 
-  for (let idx = 0; idx < arr.length; idx += 1) {
-    let subArr = []
-    deepDupRecursive(results, arr[idx], subArr)
-    results.push(subArr)
-  }
+  // Create an array or object to hold the values
+  outObject = Array.isArray(inObject) ? [] : {}
 
-  return results;
+  for (key in inObject) {
+    value = inObject[key]
+    console.log(value)
+    // Recursively (deep) copy for nested objects, including arrays
+    outObject[key] = deepDup(value)
+
+  }
+  return outObject
 }
 
-let arr = [[1], [2, [3]]];
-duped = deepDup(arr); // [[1], [2, [3]]]
-
+let arr2 = [[2, [3]]];
+duped = deepDup(arr2); // [[1], [2, [3]]]
 console.log(duped);
 
-console.log(arr[0] === duped[0]); // false
-console.log(arr[1] === duped[1]); // false
-console.log(arr[1][1] === duped[1][1]); // false
-console.log(duped[1][1]);
+// let arr = [ [ 1, [3] ] ];
+// let duped = deepDup(arr); // [[1], [2, [3]]]
+// console.log(duped);
+// let arr2 = [[1], [2, [3]]];
+// duped = deepDup(arr2); // [[1], [2, [3]]]
+// console.log(duped);
+
+// console.log(arr[0] === duped[0]); // false
+// console.log(arr[1] === duped[1]); // false
+// console.log(arr[1][1] === duped[1][1]); // false
+// console.log(duped[1][1]);
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS LINE*****************/
 try {
