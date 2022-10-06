@@ -17,8 +17,14 @@ Hint: For subsets([1, 2, 3]), there are two kinds of subsets:
 // your code here
 
 const subsets = (arr) => {
-
+  if (arr.length === 0) return [[]];
+  let last = arr[arr.length - 1];
+  let subs = subsets(arr.slice(0, arr.length - 1));
+  let newSubs = subs.map((sub) => sub.concat(last));
+  return subs.concat(newSubs);
 }
+
+console.log(subsets([1, 2]));
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS LINE*****************/
 try {

@@ -64,9 +64,55 @@ The call above should return the tree below:
 ***********************************************************************/
 
 const makeTree = (categories, parent) => {
-  // your code here
+  // Base case
+  if (categories.length === 0) {
+    return;
+  }
+
+  // Recursive case
+  let tree = {};
+  categories.forEach((category) => {
+    if (category.parent === parent) {
+      tree[category.id] = makeTree(categories, category.id);
+    }
+  });
+  return tree;
 };
 
+
+
+const categories2 = [
+  { id: 'animals', 'parent': null },
+  { id: 'mammals', 'parent': 'animals' },
+  { id: 'cats', 'parent': 'mammals' },
+  { id: 'dogs', 'parent': 'mammals' },
+  { id: 'chihuahua', 'parent': 'dogs' },
+  { id: 'labrador', 'parent': 'dogs' },
+  { id: 'persian', 'parent': 'cats' },
+  { id: 'siamese', 'parent': 'cats' }
+];
+
+const tree2 = makeTree(categories2, null);
+console.log(tree2);
+console.log(tree2['animals']['mammals']['dogs']);
+/*
+
+{
+    animals: {
+        mammals: {
+            dogs: {
+                chihuahua: {},
+                labrador: {}
+            },
+            cats: {
+                persian: {},
+                siamese: {}
+            }
+        }
+    }
+}
+
+*/
 /**************DO NOT MODIFY ANYTHING UNDER THIS LINE*****************/
 try {
   module.exports = makeTree;
