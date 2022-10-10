@@ -76,6 +76,8 @@ const makeTree = (categories, parent) => {
       tree[category.id] = makeTree(categories, category.id);
     }
   });
+
+  console.log(tree);
   return tree;
 };
 
@@ -84,12 +86,12 @@ const makeTree = (categories, parent) => {
 const categories2 = [
   { id: 'animals', 'parent': null },
   { id: 'mammals', 'parent': 'animals' },
-  { id: 'cats', 'parent': 'mammals' },
+  // { id: 'cats', 'parent': 'mammals' },
   { id: 'dogs', 'parent': 'mammals' },
   { id: 'chihuahua', 'parent': 'dogs' },
   { id: 'labrador', 'parent': 'dogs' },
-  { id: 'persian', 'parent': 'cats' },
-  { id: 'siamese', 'parent': 'cats' }
+  // { id: 'persian', 'parent': 'cats' },
+  // { id: 'siamese', 'parent': 'cats' }
 ];
 
 const tree2 = makeTree(categories2, null);

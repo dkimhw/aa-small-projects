@@ -53,6 +53,18 @@ solution so that it only calculates and compares all of the different
 combinations.
 ***********************************************************************/
 
+/*
+
+Take as many of the biggest coin as possible and add them to your result.
+Add to the result by recursively calling your method on the remaining amount,
+leaving out the biggest coin, until the remainder is zero.
+Once you have a working greedy version, talk with your partner about refactoring
+this to `makeBetterChange`. What's wrong with `greedyMakeChange`?
+
+Consider the case of `greedyMakeChange(24, [10,7,1])`. Because it takes as many
+10 pieces as possible, `greedyMakeChange` misses the correct answer of
+`[10,7,7]` (try it in node).
+*/
 function greedyMakeChange(target, coins = [25, 10, 5, 1]) {
   // no tests for greedyMakeChange so make sure to test this on your own
   // your code here
