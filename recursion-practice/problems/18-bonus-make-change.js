@@ -64,16 +64,57 @@ this to `makeBetterChange`. What's wrong with `greedyMakeChange`?
 Consider the case of `greedyMakeChange(24, [10,7,1])`. Because it takes as many
 10 pieces as possible, `greedyMakeChange` misses the correct answer of
 `[10,7,7]` (try it in node).
+
+makeChange(75); // [25, 25, 25]
+
 */
 function greedyMakeChange(target, coins = [25, 10, 5, 1]) {
   // no tests for greedyMakeChange so make sure to test this on your own
   // your code here
+  let results = 0
+  let coins_used = []
+  for (let idx = 0; idx < coins.length; idx++) {
+    while (results + coins[idx] <= target) {
+      coins_used.push(coins[idx]);
+      results += coins[idx]
+    }
+  }
+
+  return coins_used
 }
+
+let g = greedyMakeChange(75); // [25, 25, 25]
+console.log(g);
+
+let g2 = greedyMakeChange(24, [10, 7, 1]);
+console.log(g2);
 
 function makeBetterChange(target, coins = [25, 10, 5, 1]) {
   // your code here
+  let numOfNCents = [];
+  for (let idx = 0; idx <= target; idx++) {
+    numOfNCents[idx] = 0;
+  }
+
+  numOfNCents[0] = 0;
+
+  for (let idx = 0; idx < coins.length; idx++) {
+    let curr_coin = coins[idx];
+
+    for (let jdx = curr_coin; jdx <= target; jdx++) {
+      let remainder = jdx - curr_coin;
+      numOfNCents[jdx] = Math.min(numOfNCents[remainder] + 1, numOfNCents[jdx]);
+    }
+  }
+
+  console.log(numOfNCents[target]);
 }
 
+makeBetterChange(21); // [1, 10, 10]
+makeBetterChange(75); // [25, 25, 25]
+makeBetterChange(33, [15, 3]); // [3, 15, 15]
+makeBetterChange(34, [15, 3]); // null
+makeBetterChange(24, [10, 7, 1]) // [7, 7, 10]
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS LINE*****************/
 try {

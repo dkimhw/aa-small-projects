@@ -1,3 +1,5 @@
+// Got it correctly but worht reviewing
+
 /***********************************************************************
 Write a recursive method permutations(array) that calculates all the
 permutations of the given array. For an array of length n there are n! different

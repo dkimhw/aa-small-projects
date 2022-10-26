@@ -1,3 +1,5 @@
+// Really good problem to review
+
 /***********************************************************************
 Write a recursive function `makeTree(categories, parent)` that takes an array of
 categories objects, each of which have an id property, and a parent property and
