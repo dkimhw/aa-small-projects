@@ -91,30 +91,42 @@ console.log(g2);
 
 function makeBetterChange(target, coins = [25, 10, 5, 1]) {
   // your code here
-  let numOfNCents = [];
+  let minCoinsDP = [];
+  let minCoinListDP = [];
   for (let idx = 0; idx <= target; idx++) {
-    numOfNCents[idx] = 0;
+    minCoinsDP[idx] = target + 1;
+    minCoinListDP.push([])
   }
 
-  numOfNCents[0] = 0;
+  minCoinsDP[0] = 0;
 
-  for (let idx = 0; idx < coins.length; idx++) {
-    let curr_coin = coins[idx];
-
-    for (let jdx = curr_coin; jdx <= target; jdx++) {
-      let remainder = jdx - curr_coin;
-      numOfNCents[jdx] = Math.min(numOfNCents[remainder] + 1, numOfNCents[jdx]);
+  for (let idx = 1; idx <= target; idx++) {
+    for (let jdx = 0; jdx < coins.length; jdx++) {
+      let curr_coin = coins[jdx];
+      let remainder = idx - curr_coin;
+      let curr_list_of_coins = [curr_coin];
+      if (curr_coin <= idx) {
+        minCoinsDP[idx] = Math.min(minCoinsDP[remainder] + 1, minCoinsDP[idx]);
+        if (minCoinsDP[remainder] + 1 <= minCoinsDP[idx]) {
+          curr_list_of_coins = minCoinListDP[remainder].concat(curr_list_of_coins);
+          minCoinListDP[idx] = curr_list_of_coins;
+        }
+      }
     }
   }
 
-  console.log(numOfNCents[target]);
+  // console.log(minCoinsDP[target]);
+  // console.log(minCoinsDP);
+  //console.log(minCoinListDP);
+  return minCoinListDP[target].length === 0 ? null : minCoinListDP[target];
 }
 
 makeBetterChange(21); // [1, 10, 10]
-makeBetterChange(75); // [25, 25, 25]
-makeBetterChange(33, [15, 3]); // [3, 15, 15]
-makeBetterChange(34, [15, 3]); // null
-makeBetterChange(24, [10, 7, 1]) // [7, 7, 10]
+console.log(makeBetterChange(34, [15, 3])); // null
+// makeBetterChange(75); // [25, 25, 25]
+// makeBetterChange(33, [15, 3]); // [3, 15, 15]
+// makeBetterChange(34, [15, 3]); // null
+// makeBetterChange(24, [10, 7, 1]) // [7, 7, 10]
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS LINE*****************/
 try {
