@@ -1,0 +1,12 @@
+{
+  "name": "common-js-probs",
+  "version": "1.0.0",
+  "description": "In this exercise, you will practice importing and exporting using common JS.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "type": "module"
+}
