@@ -12,6 +12,9 @@ class Character {
 
   applyDamage(amount) {
     this.health -= amount;
+    if (this.health <= 0) {
+      this.die();
+    }
   }
 
   die() {

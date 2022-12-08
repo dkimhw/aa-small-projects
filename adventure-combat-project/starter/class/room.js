@@ -60,7 +60,7 @@ class Room {
 
   getEnemyByName(name) {
    // Fill this in
-   enemies = getEnemies()
+   let enemies = this.getEnemies()
    return enemies.find(enemy => enemy.name === name);
   }
 }

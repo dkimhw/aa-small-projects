@@ -58,8 +58,9 @@ class Player extends Character {
   }
 
   hit(name) {
-    findEnemy = this.currentRoom.getEnemyByName();
-    this.applyDamage(name);
+    let findEnemy = this.currentRoom.getEnemyByName(name);
+    findEnemy.applyDamage()
+    findEnemy.attackTarget = this
   }
 
   die() {
