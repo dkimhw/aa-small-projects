@@ -1,3 +1,8 @@
 const TTT = require("./class/ttt");
 
-ttt = new TTT();
+let ttt = new TTT();
+
+// let    grid = [['X','X',' '],
+// ['X','O','O'],
+// ['O','X','O']]
+// console.log(TTT.checkWin(grid));

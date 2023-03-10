@@ -150,8 +150,6 @@ class Screen {
         console.log(horizontalGridLine.join(''));
       }
 
-      // console.log(rowCopy);
-
       rowCopy.unshift(`${Screen.borderChar}`);
       rowCopy.push(`${Screen.borderChar}`);
 
@@ -168,6 +166,7 @@ class Screen {
   }
 
   static setTextColor(row, col, color) {
+    console.log(row, col, color)
 
     if (!Screen.initialized) return;
 
@@ -192,7 +191,7 @@ class Screen {
   }
 
   static setBackgroundColor(row, col, color) {
-
+    console.log(row, col, color)
     if (!Screen.initialized) return;
 
     const colorCodes = {
