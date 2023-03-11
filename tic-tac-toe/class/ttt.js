@@ -35,15 +35,25 @@ class TTT {
     console.log(this.grid);
     if (this.grid[this.cursor.row][this.cursor.col] === ' ') {
       this.grid[this.cursor.row][this.cursor.col] = this.playerTurn;
+      Screen.setGrid(this.cursor.row, this.cursor.col,this.playerTurn )
+
+      if (TTT.checkWin(this.grid)) {
+        TTT.endGame(this.playerTurn);
+      }
+
       if (this.playerTurn === 'O') {
         this.playerTurn = 'X'
       } else if (this.playerTurn === 'X') {
         this.playerTurn = 'O'
       }
       Screen.setTextColor(this.cursor.row, this.cursor.col, 'blue');
+      Screen.render();
+      console.log(this.grid);
+
+
     }
 
-    // Screen.render();
+
 
   }
 
