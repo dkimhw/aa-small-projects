@@ -21,5 +21,34 @@ let x = [
   [' ', ' ', ' ', ' ', ' ', ' ', ' ']
   ];
 
-console.log(ConnectFour.checkWin(c)); // X
-console.log(ConnectFour.checkWin(x)); // O
+
+let d = [
+  ['O', 'X', 'X', 'X', ' ', ' ', ' '],
+  ['O', 'O', ' ', ' ', ' ', ' ', ' '],
+  ['O', ' ', 'O', ' ', ' ', ' ', ' '],
+  [' ', ' ', ' ', 'O', ' ', ' ', ' '],
+  [' ', ' ', ' ', ' ', ' ', ' ', ' '],
+  [' ', ' ', ' ', ' ', ' ', ' ', ' ']
+  ];
+
+// console.log(ConnectFour.checkWin(c)); // X
+// console.log(ConnectFour.checkWin(x)); // O
+// console.log(ConnectFour.checkWin(d)); // O
+
+let grid =
+[
+[' ',' ',' ',' ',' ',' ',' '],
+[' ',' ',' ',' ',' ',' ',' '],
+[' ',' ','X',' ',' ',' ',' '],
+[' ',' ',' ','X',' ',' ',' '],
+[' ',' ',' ',' ','X',' ',' '],
+[' ',' ',' ',' ',' ','X',' ']]
+
+// console.log(ConnectFour.checkWin(grid)); // O
+let blah = [[' ',' ',' ',' ',' ',' ',' '],
+[' ',' ',' ',' ',' ',' ',' '],
+[' ',' ',' ',' ',' ',' ','O'],
+[' ',' ',' ',' ',' ','O',' '],
+[' ',' ',' ',' ','O',' ',' '],
+[' ',' ',' ','O',' ',' ',' ']]
+console.log(ConnectFour.checkWin(blah)); // O

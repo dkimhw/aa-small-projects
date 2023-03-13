@@ -91,21 +91,70 @@ class ConnectFour {
     return false;
   }
 
+  static checkDiagonal(grid, player) {
+    // let diagonals = [];
+
+    for (let idx = 0; idx < grid.length; idx += 1) {
+      let newRow = idx;
+      let diagonal = []
+      for (let jdx = 0; jdx < grid[0].length; jdx += 1) {
+        try {
+          // console.log(newRow, jdx, "value: ", grid[newRow][jdx])
+          diagonal.push(grid[newRow][jdx]);
+          newRow += 1;
+        } catch {
+          continue;
+        }
+      }
+
+      newRow = idx;
+      let diagonal2 = [];
+      for (let jdx2 = grid[0].length - 1; jdx2 > 0; jdx2 -= 1) {
+        try {
+          // console.log(newRow, jdx2, "value: ", grid[newRow][jdx2])
+          diagonal2.push(grid[newRow][jdx2]);
+          newRow += 1;
+        } catch {
+          continue;
+        }
+      }
+
+      console.log(diagonal2)
+
+      for (let ddx = 0; ddx < diagonal.length; ddx+=1) {
+        let endIdx = ddx + 3;
+        if (endIdx < diagonal.length) {
+          let hasWon = diagonal.slice(ddx, endIdx + 1).every(el => el === player);
+          if (hasWon) {
+            return true;
+          }
+        }
+      }
+
+      for (let ddx2 = 0; ddx2 < diagonal2.length; ddx2+=1) {
+        let endIdx = ddx2 + 3;
+        if (endIdx < diagonal2.length) {
+          let hasWon = diagonal2.slice(ddx2, endIdx + 1).every(el => el === player);
+          if (hasWon) {
+            return true;
+          }
+        }
+      }
+    }
+
+    return false;
+  }
+
   static checkWinPlayer(grid, player) {
     let row = this.checkRows(grid, player);
     let col = this.checkCols(grid, player);
-    // let dig = this.checkDiagonal(grid, player);
+    let dig = this.checkDiagonal(grid, player);
 
-    if (row || col ) {
+    if (row || col || dig) {
       return true;
     } else {
       return false;
     }
-    // if (row || col || dig) {
-    //   return true;
-    // } else {
-    //   return false;
-    // }
   }
 
   static checkTie(grid) {
