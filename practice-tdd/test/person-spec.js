@@ -41,5 +41,21 @@ describe('Person', function() {
     expect(() => testPerson.update({ name: "lulu" })).to.throw(Error);
   });
 
+  it ('should return true trying to update obj', function() {
+    expect(testPerson.tryUpdate({ name: "lulu", age: 57 })).to.equal(true);
+  });
 
+  it ('should return false trying to update obj', function() {
+    expect(testPerson.tryUpdate({ name: "lulu" })).to.equal(false);
+  });
+
+  it ('should return an array of welcome messages', function() {
+    let david = new Person('David', 33);
+    let patri = new Person('Patri', 36);
+    let persons = [david, patri];
+    let messages = Person.greetAll(persons);
+    console.log(messages);
+
+    expect(messages).to.eql(['Welcome David', 'Welcome Patri']);
+  });
 });
