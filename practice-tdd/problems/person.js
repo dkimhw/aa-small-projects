@@ -23,8 +23,6 @@ class Person {
     }
 
     if (!obj.hasOwnProperty('name') || !obj.hasOwnProperty('age')) {
-
-      console.log("hello")
       throw new TypeError('Must contain name and age properties');
     }
 

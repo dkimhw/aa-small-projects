@@ -54,7 +54,6 @@ describe('Person', function() {
     let patri = new Person('Patri', 36);
     let persons = [david, patri];
     let messages = Person.greetAll(persons);
-    console.log(messages);
 
     expect(messages).to.eql(['Welcome David', 'Welcome Patri']);
   });
