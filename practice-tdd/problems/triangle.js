@@ -33,12 +33,15 @@ class Scalene extends Triangle {
   }
 
   isScalene() {
-    return this.side1 !== this.side2 !== this.side3 && this.isValidTriangle();
+    return this.side1 !== this.side2 !== this.side3 && this.isValidTriangle;
   }
 
   validate() {
-
+    this.isValidScalene = this.isScalene();
   }
 }
 
-module.exports = Triangle;
+module.exports = {
+  Triangle,
+  Scalene
+};

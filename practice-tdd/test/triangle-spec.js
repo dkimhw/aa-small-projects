@@ -1,7 +1,7 @@
 // Your code here
 
 const chai = require("chai");
-const Triangle = require("../problems/triangle");
+const { Triangle, Scalene} = require("../problems/triangle");
 const expect = chai.expect;
 
 describe('Triangle', function() {
@@ -47,4 +47,10 @@ describe('Triangle', function() {
     let validTriangles = Triangle.getValidTriangles(...trianglesArr);
     expect(validTriangles).to.eql([t1, t3]);
   });
+
+  it('should return true - valid scalene triangle', function() {
+    let s = new Scalene(2, 3, 4);
+    s.validate();
+    expect(s).to.have.property('isValidScalene', true);
+  })
 })
