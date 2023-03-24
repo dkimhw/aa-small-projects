@@ -65,6 +65,22 @@ class Room {
   }
 }
 
+class DarkRoom extends Room {
+  constructor(name, description) {
+    super(name, description);
+    this.dark = true;
+    this.exits = {};
+    this.items = [];
+  }
+
+  _isLightAvailable() {
+    // Check if light is in room
+    let light = getItemByName('Light');
+    if (light) return true;
+  }
+}
+
 module.exports = {
   Room,
+  DarkRoom
 };

@@ -1,4 +1,4 @@
-const { Room } = require('./room');
+const { Room, DarkRoom } = require('./room');
 const { Item } = require('./item');
 const { Food } = require('./food');
 const { Enemy } = require('./enemy');
@@ -37,11 +37,17 @@ class World {
     // Instantiate new room objects
     // Get name, id and description from room data
     for (let i = 0 ; i < roomList.length ; i++) {
+      let roomData = roomList[i];
+      let newRoom;
+      if (roomData.type === 'Regular Room') {
+        newRoom = new Room(roomData.name, roomData.description);
+      }
 
-        let roomData = roomList[i];
-        let newRoom = new Room(roomData.name, roomData.description);
+      if (roomData.type === 'Dark Room') {
+        newRoom = new DarkRoom(roomData.name, roomData.description);
+      }
 
-        World.rooms[roomData.id] = newRoom;
+      World.rooms[roomData.id] = newRoom;
     }
 
     // Connect rooms by ID
