@@ -1,6 +1,7 @@
 const {Character} = require('./character');
 const {Enemy} = require('./enemy');
 const {Food} = require('./food');
+const {DarkRoom} = require('./room');
 
 class Player extends Character {
 
@@ -9,12 +10,16 @@ class Player extends Character {
   }
 
   move(direction) {
-
     const nextRoom = this.currentRoom.getRoomInDirection(direction);
 
     // If the next room is valid, set the player to be in that room
     if (nextRoom) {
       this.currentRoom = nextRoom;
+
+      let itemIdx = this.items.findIndex(item => item.name === 'light');
+      let light = itemIdx === -1 ? false : true;
+      console.log("light", light);
+      if (light) this.currentRoom.canSee = true;
 
       nextRoom.printRoom(this);
     } else {
@@ -30,6 +35,19 @@ class Player extends Character {
       for (let i = 0 ; i < this.items.length ; i++) {
         console.log(`  ${this.items[i].name}`);
       }
+    }
+  }
+
+  hasLight(direction) {
+    console.log("items: ", this.items);
+
+    const nextRoom = this.currentRoom.getRoomInDirection(direction);
+    // If the next room is valid, set the player to be in that room
+    if (nextRoom) {
+      let itemIdx = this.items.findIndex(item => item.name === 'light');
+      let light = itemIdx === -1 ? false : true;
+      console.log("light", light);
+      if (light) nextRoom.canSee = true;
     }
   }
 

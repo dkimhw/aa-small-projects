@@ -67,7 +67,6 @@ class World {
 
     // Instantiate items
     for (let i = 0 ; i < itemList.length ; i++) {
-
       let itemData = itemList[i];
       let newItem;
 

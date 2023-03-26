@@ -58,6 +58,11 @@ class Room {
     return retrievedItem;
   }
 
+  checkItem(name) {
+    let itemIdx = this.items.findIndex(item => item.name === name);
+    return itemIdx === -1 ? false : true;
+  }
+
   getEnemyByName(name) {
    // Fill this in
    let enemies = this.getEnemies()
@@ -68,16 +73,45 @@ class Room {
 class DarkRoom extends Room {
   constructor(name, description) {
     super(name, description);
-    this.dark = true;
+    this.canSee = false;
     this.exits = {};
     this.items = [];
   }
 
-  _isLightAvailable() {
+  isLightAvailable() {
     // Check if light is in room
-    let light = getItemByName('Light');
-    if (light) return true;
+    let light = this.getItemByName('light');
+    if (light?.name === 'light') {
+      return true
+    } else {
+      return false
+    };
   }
+
+  printRoom() {
+    console.clear();
+
+    this.canSee = this.checkItem('light');
+
+    if (this.canSee) {
+      console.log("");
+      console.log(this.name);
+      console.log("");
+      console.log(this.description);
+      console.log("");
+      if (this.getEnemies().length > 0) {
+        console.log(`Enemies: ${this.getEnemies().map(enemy => enemy.name).join(", ")}`);
+      }
+      if (this.items.length > 0) {
+        console.log(`Items: ${this.items.map(item => item.name).join(", ")}`);
+      }
+      console.log(this.getExitsString());
+      console.log("");
+    } else {
+      console.log("The room is pitch dark. You cannot see anything\n");
+    }
+  }
+
 }
 
 module.exports = {

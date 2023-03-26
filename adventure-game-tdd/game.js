@@ -72,6 +72,7 @@ function processCommand() {
 
     } else if (['n', 's', 'e', 'w'].indexOf(cmd) >= 0) {
       let direction = cmd;
+      player.hasLight(direction);
       player.move(direction);
 
     } else if (cmd.startsWith("take ")) {

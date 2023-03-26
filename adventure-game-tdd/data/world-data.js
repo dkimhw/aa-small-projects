@@ -39,14 +39,28 @@ module.exports = {
       id: 6,
       name: 'Southern Blue Room',
       type: 'Dark Room',
-      description: "You cannot see anything",
+      description: "This is the blue room",
       exits: {n: 5, s: 7}
     },
     {
       id: 7,
       name: 'Southern Green Room',
       type: 'Dark Room',
-      description: "You cannot see anything",
+      description: "This is the green room",
+      exits: {s: 8}
+    },
+    {
+      id: 8,
+      name: 'Southern Purple Room',
+      type: 'Dark Room',
+      description: "This is the southern purple room",
+      exits: {w: 9}
+    },
+    {
+      id: 9,
+      name: 'Western Purple Room',
+      type: 'Dark Room',
+      description: "This is the western purple room",
       exits: {n: 1}
     },
   ],
@@ -61,13 +75,30 @@ module.exports = {
       description: "A tasty looking sandwich",
       room: 2,
       isFood: true
-    }
+    },
+    {
+      name: "sandwich",
+      description: "A tasty looking sandwich",
+      room: 9,
+      isFood: true
+    },
+    {
+      name: "light",
+      description: "Light that let's you see in the dark",
+      room: 7
+    },
+
   ],
   enemies: [
     {
       name: "goblin",
       description: "A mean-looking goblin",
       room: 3
+    },
+    {
+      name: "goblin",
+      description: "A mean-looking goblin",
+      room: 7
     },
   ]
 }
