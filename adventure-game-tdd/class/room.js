@@ -78,20 +78,9 @@ class DarkRoom extends Room {
     this.items = [];
   }
 
-  isLightAvailable() {
-    // Check if light is in room
-    let light = this.getItemByName('light');
-    if (light?.name === 'light') {
-      return true
-    } else {
-      return false
-    };
-  }
-
   printRoom() {
     console.clear();
-
-    this.canSee = this.checkItem('light');
+    if (this.checkItem('light')) this.canSee = true;
 
     if (this.canSee) {
       console.log("");
