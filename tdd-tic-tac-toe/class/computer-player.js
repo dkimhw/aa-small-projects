@@ -83,16 +83,20 @@ class ComputerPlayer {
       return cnt >= 2;
     });
 
-    console.log("winning lines", winningLines);
+    // console.log("winning lines", winningLines);
 
     if (winningLines?.length > 0) {
       let findEmptyMove = winningLines[0].filter(move => {
         if (move['symbol'] === ' ') return true;
       });
 
-      console.log("findEmptyMove", findEmptyMove);
+      // console.log("findEmptyMove", findEmptyMove);
+      if (findEmptyMove.length > 0) {
+        return { row: findEmptyMove[0].row, col: findEmptyMove[0].col }
+      } else {
 
-      return { row: findEmptyMove[0].row, col: findEmptyMove[0].col }
+        null;
+      }
     }
 
     return null;
@@ -100,7 +104,21 @@ class ComputerPlayer {
 
   static getSmartMove(grid, symbol) {
     // Your code here
-    return this.getWinningMoves(grid, symbol);
+    let compWinningMove = this.getWinningMoves(grid, symbol);
+    let playerWinningMove = this.getWinningMoves(grid, 'O');
+
+    // console.log("compWinningMove: ",  compWinningMove);
+    // console.log("blah: ", compWinningMove.hasOwnProperty('row') && compWinningMove.hasOwnProperty('col'))
+
+    if (compWinningMove?.hasOwnProperty('row') && compWinningMove?.hasOwnProperty('col')) {
+      console.log("here")
+      return compWinningMove;
+    }
+
+    if (playerWinningMove?.hasOwnProperty('row') && playerWinningMove?.hasOwnProperty('col')) {
+      console.log('here2')
+      return playerWinningMove;
+    }
   }
 
 }

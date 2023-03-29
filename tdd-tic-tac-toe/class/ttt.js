@@ -60,8 +60,8 @@ class TTT {
   static checkRows(grid, player) {
     for (let idx = 0; idx < grid.length; idx += 1) {
       let currRow = grid[idx];
-      console.log("grid: ", grid);
-      console.log("player: ", player)
+      // console.log("grid: ", grid);
+      // console.log("player: ", player)
       let hasWon = currRow.every(el => el === player);
       if (hasWon) {
         return true;
