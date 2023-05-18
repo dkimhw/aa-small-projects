@@ -36,25 +36,49 @@ const evenNumOfChars = arr => {
 };
 
 const smallerThanCurr = arr => {
-
   // Your code here
+  let results = []
+  for (let idx = 0; idx < arr.length; idx++) {
+    let currCnt = 0;
+    for (let jdx = 0; jdx < arr.length; jdx++) {
+      if (idx !== jdx && arr[idx] > arr[jdx]) currCnt++;
+    }
 
+    results.push(currCnt);
+  }
+
+  return results;
 };
 
 const twoSum = (arr, target) => {
+  let map = {};
 
-  // Your code here
+  for (let idx = 0; idx < arr.length; idx++) {
+    let diff = target - arr[idx];
+    let currKey = arr[idx]
+
+    if (currKey in map) {
+      return true;
+    } else {
+      map[diff] = 1;
+    }
+  }
+
+  return false;
 };
 
-const secondLargest = arr => {
+// console.log(twoSum([4, 2, 3, 6, 9], 10)); // true
 
+const secondLargest = arr => {
   // Your code here
+  return arr.sort((a, b) => b - a)[1]
 };
 
 const shuffle = (arr) => {
-
-  // Your code here
+  let shuffled = arr.slice().sort(() => Math.random() - 0.5);
+  return shuffled;
 };
 
+shuffle([1,2,3,4])
 
 module.exports = [findMinimum, runningSum, evenNumOfChars, smallerThanCurr, twoSum, secondLargest, shuffle];
