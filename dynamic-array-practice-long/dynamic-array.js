@@ -48,10 +48,9 @@ class DynamicArray {
     let newArr = new Array(this.capacity);
     newArr[0] = val;
     for (let idx = 0; idx < this.data.length; idx++) {
-      newArr[idx + 1] = this.data[idx];
+      if (idx + 1 < this.data.length) newArr[idx + 1] = this.data[idx];
     }
     this.data = newArr;
-    console.log(this.data);
     this.length++;
 
   }
