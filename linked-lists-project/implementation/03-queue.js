@@ -1,23 +1,53 @@
 const { SinglyLinkedNode } = require("./01-singly-linked-list");
 
 class Queue {
+  constructor() {
+    this.head = null;
+    this.tail = null;
+    this.length = 0;
+  }
 
-    constructor() {
-        this.head = null;
-        this.tail = null;
+  enqueue(val) {
+    // Add node to end of queue (linked list)
+    let newNode = new SinglyLinkedNode(val);
+
+    if (this.head === null && this.tail === null) {
+      this.head = newNode;
+      this.tail = newNode;
+    } else {
+      this.tail.next = newNode;
+      this.tail = newNode;
     }
 
-    enqueue(val) {
-        // Add node to end of queue (linked list)
+    this.length++;
+    return this.length;
+    // Write your hypothesis on the time complexity of this method here
+    // O(1)
+  }
 
-        // Write your hypothesis on the time complexity of this method here
+  dequeue() {
+    // Remove node from front of queue (linked list)
+    if (this.length === 1) {
+      let tmpVal = this.head.value;
+      this.head = null;
+      this.tail = null;
+      this.length--;
+
+      return tmpVal;
+    } else if (this.head !== null) {
+      let returnVal = this.head.value;
+      let tmpNode = this.head.next;
+      this.head = tmpNode;
+      this.length--;
+
+      return returnVal;
     }
 
-    dequeue() {
-        // Remove node from front of queue (linked list)
-        
-        // Write your hypothesis on the time complexity of this method here
-    }
+    return null;
+
+    // Write your hypothesis on the time complexity of this method here
+    // O(1)
+  }
 
 }
 
